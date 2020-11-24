@@ -1,11 +1,15 @@
+
 import React from 'react';
-import '../stylesheets/App.scss';
+import '../stylesheets/Header.scss';
+import logo from '../images/Logo.png'
 
 class Header extends React.Component {
   render() {
     return (
       <>
-      <h1>Ricky y Morty</h1>
+      <header className= "header">
+      <h1 className= "header_title"><img className= "header_imagen" src={logo}/></h1>
+      </header>
       </>
     );
   }

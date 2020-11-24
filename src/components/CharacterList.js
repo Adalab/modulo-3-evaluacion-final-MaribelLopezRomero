@@ -1,5 +1,5 @@
 import React from 'react';
-import '../stylesheets/App.scss';
+import '../stylesheets/CharacterList.scss';
 import CharacterCard from './CharacterCard';
 
 class CharacterList extends React.Component {
@@ -8,12 +8,12 @@ class CharacterList extends React.Component {
     const mortyCards = this.props.dataMortylist; //props que me pasa el array de datos
     const itemsMortyCards = mortyCards.map((card) => {
       return (
-        <li key={card.id}>
+        <li className = "card" key={card.id}>
           <CharacterCard
             name={card.name}
             image={card.image}
             species={card.species}
-            id = {card.id}
+            id={card.id}
           />
         </li>
       );
@@ -21,7 +21,9 @@ class CharacterList extends React.Component {
 
     return (
       <>
-        <ul>{itemsMortyCards}</ul>
+        <section>
+          <ul className ='list'>{itemsMortyCards}</ul>
+        </section>
       </>
     );
   }
