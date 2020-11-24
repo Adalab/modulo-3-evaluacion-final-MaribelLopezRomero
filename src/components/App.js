@@ -5,6 +5,7 @@ import CharacterList from './CharacterList';
 import Filters from './Filter';
 import { Route, Switch } from 'react-router-dom';
 import CharacterDetail from './CharacterDetail';
+import CharacterNotFound from './CharacterNotFound';
 
 class App extends React.Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class App extends React.Component {
   }
   // pitamos la tarjeta de detalles, para ello en la rruta que queremos que aparezca declaramos la fucion que pinta los datos, despues con un find, decimos que compare la ruta que hemos puesto (nombre., nickname) con los datos dentro del array incial(name)
   renderCharacterDetail(props) {
+    console.log (props);
     const id = parseInt(props.match.params.id);
     const dataObj = this.state.data.find((cardDetail) => {
       return cardDetail.id === id;
@@ -71,7 +73,8 @@ class App extends React.Component {
     if (dataObj) {
       return <CharacterDetail data={dataObj} />;
     } else {
-      <p>Este personaje no existe</p>;
+      return <CharacterNotFound name = {this.state.inputValue}/>
+    
     }
   }
 

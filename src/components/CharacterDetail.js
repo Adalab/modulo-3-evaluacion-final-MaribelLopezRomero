@@ -44,7 +44,7 @@ const CharacterDetail = (props) => {
         <h2>{origin.name}</h2>
       </div>
       <Link to='/'>
-        <button>VOLVER</button>
+        <button>Volver</button>
       </Link>
     </>
   );
