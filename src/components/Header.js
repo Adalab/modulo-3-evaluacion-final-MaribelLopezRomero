@@ -5,6 +5,7 @@ class Header extends React.Component {
   render() {
     return (
       <>
+      <h1>Ricky y Morty</h1>
       </>
     );
   }
