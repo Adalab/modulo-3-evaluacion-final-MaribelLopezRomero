@@ -13,6 +13,7 @@ class CharacterList extends React.Component {
             name={card.name}
             image={card.image}
             species={card.species}
+            id = {card.id}
           />
         </li>
       );

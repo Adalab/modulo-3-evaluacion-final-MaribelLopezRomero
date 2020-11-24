@@ -31,7 +31,7 @@ class App extends React.Component {
     });
   }
 
-  //lifttin, evento de filtrado
+  //Filtro
   handleInput(value) {
     this.setState(
       {
@@ -43,20 +43,36 @@ class App extends React.Component {
 
   filter() {
     console.log(this.state.inputValue);
-    const filterMortyCard = this.state.data.filter((cardFiltred) =>
-      cardFiltred.name
-        .toLowerCase()
-        .includes(this.state.inputValue.toLowerCase())
-    );
-    this.setState({ dataFilter: filterMortyCard });
+
+    // this.state.dataFilter.length === 0 ? <p>No hay ningún personaje que coincida con la
+    // palabra {this.state.data.inputValue}</p>
+    // this.state.dataFilter.inputValue !== this.state.dataFilter.name
+
+    if (this.state.dataFilter === 0) {
+      <p>
+        No hay ningún personaje que coincida con la palabra
+        {this.state.data.inputValue}
+      </p>;
+    } else {
+      const filterMortyCard = this.state.data.filter((cardFiltred) =>
+        cardFiltred.name
+          .toLowerCase()
+          .includes(this.state.inputValue.toLowerCase())
+      );
+      this.setState({ dataFilter: filterMortyCard });
+    }
   }
   // pitamos la tarjeta de detalles, para ello en la rruta que queremos que aparezca declaramos la fucion que pinta los datos, despues con un find, decimos que compare la ruta que hemos puesto (nombre., nickname) con los datos dentro del array incial(name)
   renderCharacterDetail(props) {
-    const dataObj = this.state.dataFilter.find(
-      (cardDetail) => cardDetail.id === this.props.match.params.nickname
-    );
-    return <CharacterDetail data={dataObj} />;
-    console.log(props);
+    const id = parseInt(props.match.params.id);
+    const dataObj = this.state.data.find((cardDetail) => {
+      return cardDetail.id === id;
+    });
+    if (dataObj) {
+      return <CharacterDetail data={dataObj} />;
+    } else {
+      <p>Este personaje no existe</p>;
+    }
   }
 
   render() {
@@ -75,7 +91,7 @@ class App extends React.Component {
               dataMortylist={MortyDataFilter} // para filtrar tengo que pasarte el estado, donde se guardara el array completo y el filtrado en funcion de si tengo algo en el value o no
             />
           </Route>
-          <Route path='/:nickname' render={this.renderCharacterDetail} />
+          <Route path='/:id' render={this.renderCharacterDetail} />
         </Switch>
       </>
     );

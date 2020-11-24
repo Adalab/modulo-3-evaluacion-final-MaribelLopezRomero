@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 class CharacterCard extends React.Component {
   render() {
+    // console.log (this.props.id)
+    // console.log (this.props.name)
     return (
       <Link to={'/' + this.props.id}>
         <div>

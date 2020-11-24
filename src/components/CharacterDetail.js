@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import React from 'react';
 import '../stylesheets/App.scss';
 
@@ -30,21 +31,22 @@ import '../stylesheets/App.scss';
 // export default CharacterDetail;
 
 const CharacterDetail = (props) => {
-  const {name, image, species, episode, status, origin } = props.data;
+    console.log (props)
+  const { name, image, species, episode, status, origin } = props.data;
   return (
-    <div >
-      <img
-        src={image}
-        alt={name}
-        title={name}
-      />
-      <h2>{name}</h2>
-      <h2>{species}</h2>
-      <h2>{episode.length}</h2>
-      <h2>{status}</h2>
-      <h2>{origin.name}</h2>
-    </div>
-
+    <>
+      <div>
+        <img src={image} alt={name} title={name} />
+        <h2>{name}</h2>
+        <h2>{species}</h2>
+        <h2>{episode.length}</h2>
+        <h2>{status}</h2>
+        <h2>{origin.name}</h2>
+      </div>
+      <Link to='/'>
+        <button>VOLVER</button>
+      </Link>
+    </>
   );
-}
+};
 export default CharacterDetail;
