@@ -3,7 +3,6 @@ import React from 'react';
 import '../stylesheets/CharacterDetail.scss';
 
 const CharacterDetail = (props) => {
-  console.log(props);
   const { name, image, species, episode, status, origin } = props.data;
   return (
     <>
