@@ -14,11 +14,11 @@ class Filter extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    this.props.handleFormSubmit();
+   
   }
   render() {
     return (
-      <form className = "form"onSubmit={this.handleFormSubmit}>
+      <form className = "form" onSubmit={this.handleFormSubmit}>
         <label htmlFor='title'></label>
         <input className = "form_input"
           placeholder='¿A quien estas buscando?'

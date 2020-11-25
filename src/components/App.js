@@ -19,7 +19,6 @@ class App extends React.Component {
       textAlert: '',
     };
     this.handleInput = this.handleInput.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit(this);
     this.filter = this.filter.bind(this);
     this.renderCharacterDetail = this.renderCharacterDetail.bind(this);
   }
@@ -35,9 +34,6 @@ class App extends React.Component {
       );
     });
   }
-
-  //PreventDefault
-  handleFormSubmit(event) {}
 
   //evento de filtrado
   handleInput(value) {
@@ -57,13 +53,11 @@ class App extends React.Component {
         .includes(this.state.inputValue.toLowerCase())
     );
     this.setState({ dataFilter: filterMortyCard });
-//Preguntar como hacer que funcione desde aqui y no desde app
+    //Preguntar como hacer que funcione desde aqui y no desde app
     if (filterMortyCard.length === 0) {
-     this.setState({
-        textAlert: `No hay ningún personaje que coincida con la palabra ${this.state.inputValue}`
-      })
-      return (<CharacterNotFound value={this.state.textAlert} />)
-      ;
+      this.setState({
+        textAlert: `No hay ningún personaje que coincida con la palabra ${this.state.inputValue}`,
+      });
     }
   }
 
@@ -93,14 +87,13 @@ class App extends React.Component {
             <Filters
               inputValue={inputValue}
               handleInput={this.handleInput} //props para que filer avise a app del evento
-              handleFormSubmit={this.handleFormSubmit}
             />
             {this.state.dataFilter.length === 0 ? (
-              <CharacterNotFound value = {this.state.textAlert}/>
-            ) : ( 
-            <CharacterList
-              dataMortylist={MortyDataFilter} // para filtrar tengo que pasarte el estado, donde se guardara el array completo y el filtrado en funcion de si tengo algo en el value o no
-            />
+              <CharacterNotFound value={this.state.textAlert} />
+            ) : (
+              <CharacterList
+                dataMortylist={MortyDataFilter} // para filtrar tengo que pasarte el estado, donde se guardara el array completo y el filtrado en funcion de si tengo algo en el value o no
+              />
             )}
           </Route>
           <Route path='/:id' render={this.renderCharacterDetail} />
