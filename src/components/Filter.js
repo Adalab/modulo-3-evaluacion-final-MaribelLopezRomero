@@ -9,24 +9,24 @@ class Filter extends React.Component {
   }
   searchCharacter(event) {
     const value = event.target.value;
-    this.props.handleInput(value); //funcion que avisa a app de que se activa el evento
+    this.props.handleInput(value);
   }
 
   handleFormSubmit(event) {
     event.preventDefault();
-   
   }
   render() {
     return (
-      <form className = "form" onSubmit={this.handleFormSubmit}>
+      <form className='form' onSubmit={this.handleFormSubmit}>
         <label htmlFor='title'></label>
-        <input className = "form_input"
+        <input
+          className='form_input'
           placeholder='¿A quien estas buscando?'
           type='text'
           id='title'
           name='title'
-          value={this.props.inputValue} // pasa por props el nuevo valor del imput (el que el usuario busca)
-          onChange={this.searchCharacter} //Evento para el filtrado.
+          value={this.props.inputValue}
+          onChange={this.searchCharacter}
         />
       </form>
     );
